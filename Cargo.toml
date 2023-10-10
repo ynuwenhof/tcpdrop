@@ -2,6 +2,11 @@
 name = "tcpdrop"
 version = "0.1.0"
 edition = "2021"
+description = "Export IPv4 and IPv6 TCP table"
+readme = "README.md"
+homepage = "https://github.com/ynuwenhof/tcpdrop"
+repository = "https://github.com/ynuwenhof/tcpdrop"
+license = "MIT OR Apache-2.0"
 
 [dependencies]
 color-eyre = "0.6.2"
