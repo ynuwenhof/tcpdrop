@@ -10,6 +10,10 @@ color-eyre = "0.6.2"
 version = "1.14.0"
 features = ["extern_crate_std"]
 
+[dependencies.clap]
+version = "4.4.6"
+features = ["derive", "env"]
+
 [dependencies.serde]
 version = "1.0.188"
 features = ["derive"]
