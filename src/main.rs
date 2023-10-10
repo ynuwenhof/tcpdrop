@@ -3,7 +3,7 @@ use clap::Parser;
 use color_eyre::eyre::eyre;
 use std::alloc::Layout;
 use std::path::PathBuf;
-use std::{alloc, mem, slice};
+use std::{alloc, fs, mem, slice};
 use windows::Win32::Foundation::{ERROR_INSUFFICIENT_BUFFER, NO_ERROR};
 use windows::Win32::NetworkManagement::IpHelper;
 use windows::Win32::NetworkManagement::IpHelper::{MIB_TCP6TABLE, MIB_TCPTABLE};
@@ -22,10 +22,26 @@ struct Cli {
     output: Option<PathBuf>,
 }
 
-fn main() {
+fn main() -> color_eyre::Result<()> {
     let cli = Cli::parse();
 
-    println!("Hello, world!");
+    color_eyre::install()?;
+
+    let table = unsafe { tcp_table(!cli.no_v4, !cli.no_v6)? };
+
+    let output = if cli.pretty {
+        serde_json::to_string_pretty(&table)?
+    } else {
+        serde_json::to_string(&table)?
+    };
+
+    if let Some(dest) = cli.output {
+        fs::write(dest, output.as_bytes())?;
+    } else {
+        println!("{output}");
+    }
+
+    Ok(())
 }
 
 unsafe fn tcp_table(v4: bool, v6: bool) -> color_eyre::Result<Vec<TcpRow>> {
