@@ -5,6 +5,10 @@ edition = "2021"
 
 [dependencies]
 
+[dependencies.bytemuck]
+version = "1.14.0"
+features = ["extern_crate_std"]
+
 [dependencies.windows]
 version = "0.51.1"
 features = ["Win32_Foundation", "Win32_Networking_WinSock", "Win32_NetworkManagement_IpHelper"]
