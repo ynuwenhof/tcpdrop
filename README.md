@@ -2,6 +2,35 @@
 
 Export IPv4 and IPv6 TCP table.
 
+## Installation
+
+### Cargo
+
+Make sure the current stable release of [Rust](https://rust-lang.org/tools/install) is installed.
+
+#### Registry
+
+```bash
+cargo install tcpdrop
+```
+
+#### Manual
+
+```bash
+git clone https://github.com/ynuwenhof/tcpdrop.git
+cd tcpdrop
+cargo install --path .
+```
+
+After installing, you can run the application with:
+
+```bash
+tcpdrop --pretty
+```
+
+this will print the TCP table into the terminal.
+
+
 ## Configuration
 
 Tcpdrop can be configured via environment variables or command line arguments.
