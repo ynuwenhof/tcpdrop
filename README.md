@@ -2,6 +2,21 @@
 
 Export IPv4 and IPv6 TCP table.
 
+```json
+[
+  {
+    "state": "Listen",
+    "local": "0.0.0.0:34560",
+    "remote": "0.0.0.0:0"
+  },
+  {
+    "state": "Listen",
+    "local": "[::]:34560",
+    "remote": "[::]:0"
+  }
+]
+```
+
 ## Installation
 
 ### Cargo
